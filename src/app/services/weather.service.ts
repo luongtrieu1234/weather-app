@@ -9,9 +9,6 @@ import { environment as env } from '../../environments/environment';
 export class WeatherService {
   constructor(private http: HttpClient) {}
 
-  /**
-   * Méthode permettant de générer la chaîne de caractère de la date actuelle.
-   */
   static getDateString = (date: Date = new Date()): string => {
     const today = {
       day: date.getUTCDay(),
@@ -55,10 +52,6 @@ export class WeatherService {
       .substring(2)}`;
   };
 
-  /**
-   * Méthode pour récupérer les informations météo d'une ville
-   * à partir de l'API Open Weather Maps.
-   */
   getWeather = (city: string): Observable<any> => {
     return this.http
       .get(`${env.weatherApiURL}&q=${city}&appid=${env.apiKey}`, {
@@ -69,8 +62,6 @@ export class WeatherService {
   };
 
   /**
-   * Méthode pour récupérer les prévisions météo d'une position géographique
-   * à partir de l'API Open Weather Maps.
    * @param location
    * @returns Observable<any>
    */
