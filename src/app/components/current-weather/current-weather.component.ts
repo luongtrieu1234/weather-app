@@ -26,9 +26,6 @@ import {
   
     constructor() {}
   
-    /**
-     * Méthode permettant d'afficher la date en temps réel dans le DOM
-     */
     liveDate(): void {
       document.getElementById('weather-date')!.innerHTML =
         WeatherService.getDateString(new Date(CurrentWeatherComponent.dt));

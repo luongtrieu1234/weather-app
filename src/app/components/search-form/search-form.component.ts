@@ -30,8 +30,6 @@ export class SearchFormComponent implements OnInit {
   }
 
   /**
-   * Méthode permettant de mettre à jour la couleur du bouton de
-   * recherche
    * @param color
    */
   updateSearchBtnColor(color: string): void {
