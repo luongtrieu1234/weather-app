@@ -1,0 +1,14 @@
+<div class="flex px-10 2xl:pt-10 lg:pt-8">
+    <ul class="town-list w-full border-b-2 border-b-gray-200 border-opacity-30">
+        <li *ngFor="let city of recentSearchList" class="2xl:mb-10 lg:mb-6">
+            <button class="text-darken-link" (click)="searchLocation(city)">
+                {{ city }}
+            </button>
+        </li>
+        <li
+            *ngIf="recentSearchList.length === 0"
+            class="font-light text-white text-opacity-60 pb-3">
+            <small>Your search history will appear here...</small>
+        </li>
+    </ul>
+</div>
