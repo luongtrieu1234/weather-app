@@ -1,20 +1,23 @@
 <div
-  class="flex flex-col lg:flex-row bg-[url('assets/images/bg-light.jpg')] bg-no-repeat bg-cover w-full text-white h-screen">
-  <section class="section-1">
-    <div class="title flex mx-20 mt-10 items-center">
-      <h2 class="font-medium text-xl">Weather any where</h2>
-    </div>
-    <app-current-weather
-      [currentWeather]="weatherData.current"></app-current-weather>
-  </section>
-  <section class="section-2 overflow-scroll overflow-x-hidden">
-    <app-search-form
+  class="flex flex-col lg:flex-row bg-[url('assets/images/bg.jpg')] bg-no-repeat bg-cover w-full text-white h-screen overflow-hidden">
+  <section class="section-2">
+    <app-search-form class="ml-3"
       (searchLocationEvent)="searchLocation($event)"></app-search-form>
+    <header class="title font-normal mt-7 ml-10">List of searched cities</header>
     <app-recent-search
       (searchRecentLocationEvent)="searchLocation($event)"
       [recentSearchList]="recentSearchList"></app-recent-search>
-    <app-details-weather
-      [detailsWeather]="weatherData.details"></app-details-weather>
+  </section>
+  <section
+    style="display: flex; justify-content: center; align-items: center; height: 100vh; margin-left: 12%;">
+    <div
+      style>
+      <app-current-weather
+        [currentWeather]="weatherData.current"></app-current-weather>
+      <app-details-weather
+        [detailsWeather]="weatherData.details"></app-details-weather>
+    </div>
+
   </section>
   <div
     *ngIf="loading"
