@@ -34,7 +34,7 @@ export class UiService {
   cleanArray = (array: string[]): string[] => {
     array = array.filter((entry) => entry.trim() != ''); // Removing empty string
     array = [...new Set(array)]; // Keep unique values
-    if (array.length >= 10) array.pop(); // Keep array size to 9
+    if (array.length >= 8) array.pop(); // Keep array size to 7
     return array;
   };
 }
