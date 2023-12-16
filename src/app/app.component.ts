@@ -60,34 +60,40 @@ export class AppComponent implements OnInit {
 
   searchLocation(location: string) {
     this.uiService.startLoading();
-
-    this.weatherService.getWeather(location).subscribe((data: any) => {
-      if (data.cod) {
-        this.weatherData = {
-          current: {
-            city: data.name as string,
-            country: data.sys.country as string,
-            date: data.dt * 1000 + data.timezone * 1000,
-            temp: data.main.temp as number,
-            icon: data.weather[0].icon as string,
-            description: data.weather[0].description as string,
-          },
-          details: {
-            clouds: data.clouds.all as number,
-            humidity: data.main.humidity as number,
-            pressure: data.main.pressure as number,
-            wind_speed: data.wind.speed as number,
-            wind_deg: data.wind.deg as number,
-          },
-        };
-      } else {
-        console.log(data);
+  
+    this.weatherService.getWeather(location).subscribe(
+      (data: any) => {
+        if (data.cod) {
+          this.weatherData = {
+            current: {
+              city: data.name as string,
+              country: data.sys.country as string,
+              date: data.dt * 1000 + data.timezone * 1000,
+              temp: data.main.temp as number,
+              icon: data.weather[0].icon as string,
+              description: data.weather[0].description as string,
+            },
+            details: {
+              clouds: data.clouds.all as number,
+              humidity: data.main.humidity as number,
+              pressure: data.main.pressure as number,
+              wind_speed: data.wind.speed as number,
+              wind_deg: data.wind.deg as number,
+            },
+          };
+        } else {
+          console.log(data);
+        }
+  
+        this.updateRecentSearch();
+  
+        this.uiService.stopLoading();
+      },
+      (error) => {
+        console.error(error);
+        this.uiService.stopLoading();
       }
-
-      this.updateRecentSearch();
-
-      this.uiService.stopLoading();
-    });
+    );
   }
 
 
